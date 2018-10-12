@@ -3,4 +3,6 @@
 
 
 #REINICIAR TODO
+
+
 ./clean_all.sh
