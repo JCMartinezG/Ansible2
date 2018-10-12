@@ -1,0 +1,9 @@
+---
+- name: Instalacion de MySQL
+  hosts: sql
+  vars:
+    mysql_root_password: 0505
+    ansible_hostname: sql
+  remote_user: root
+  roles:
+   - sqlserver

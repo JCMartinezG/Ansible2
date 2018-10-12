@@ -1,0 +1,20 @@
+---
+  - name: Install MySQL
+    apt: name={{ item }} update_cache=yes cache_valid_time=3600 state=present
+    sudo: yes
+    with_items:
+    - python-mysqldb
+    - mysql-server
+
+  - name: Start the MySQL service
+    sudo: yes
+    service:
+      name: mysql
+      state: started
+      enabled: true
+
+  - name:  Create a new database
+    mysql_db: name={{database_name}} state=present collation=utf8_general_ci
+
+  - name:  Create a database user
+    mysql_user: name={{user}} password={{password}} priv=*.*:ALL host=localhost state=present
